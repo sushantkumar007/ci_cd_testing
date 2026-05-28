@@ -3,7 +3,11 @@ import express from "express";
 const app = express();
 
 app.get("/", (req, res) => {
-  res.send("Hello World! V2");
+  res.send("Hello World! V3");
+})
+
+app.get("/health", ( req,res )=> {
+  res.send('Server is healthy')
 })
 
 app.listen(3000, () => {
