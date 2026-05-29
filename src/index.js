@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 8000;
 const NAME = process.env.NAME || "Guest";
 
 app.get("/", (req, res) => {
-  res.send(`V:30, hello from the server! ${PORT}, hello ${NAME}`);
+  res.send(`V:31, hello from the server! ${PORT}, hello ${NAME}`);
 });
 
 app.get("/health", (req, res) => {

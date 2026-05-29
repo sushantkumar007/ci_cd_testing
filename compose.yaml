@@ -1,0 +1,44 @@
+services:
+  backend-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    restart: always
+    volumes:
+      - .:/app
+      - /app/node_modules
+    networks:
+      - backend-network
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - backend-network
+    configs:
+      - source: Caddyfile
+        target: /etc/caddy/Caddyfile
+
+networks:
+  backend-network:
+
+volumes:
+  caddy_data:
+  caddy_config:
+
+configs:
+  Caddyfile:
+    file: ./Caddyfile
