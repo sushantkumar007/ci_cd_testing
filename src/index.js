@@ -1,10 +1,11 @@
 import express from "express";
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8000;
+const NAME = process.env.NAME || "Guest";
 
 app.get("/", (req, res) => {
-  res.send("Hello World! V22, hello from the server!");
+  res.send(`Hello World! V23, hello from the server! ${PORT}, hello ${NAME}`);
 });
 
 app.get("/health", (req, res) => {
