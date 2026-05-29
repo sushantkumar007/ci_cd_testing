@@ -1,0 +1,7 @@
+{
+  email sushantkumar@gmail.com
+}
+
+teambound.pro {
+  reverse_proxy backend-server:8000
+}
