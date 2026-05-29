@@ -24,11 +24,13 @@ services:
       - "443:443"
       - "443:443/udp"
     volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile
       - caddy_data:/data
       - caddy_config:/config
     networks:
       - backend-network
+    configs:
+      - source: Caddyfile
+        target: /etc/caddy/Caddyfile
 
 networks:
   backend-network:
@@ -36,3 +38,7 @@ networks:
 volumes:
   caddy_data:
   caddy_config:
+
+configs:
+  Caddyfile:
+    file: ./Caddyfile
